@@ -19,7 +19,7 @@ Install pipenv and activate the virtualvenv
 
 ```bash
   pip install pipenv
-  run pipenv shell
+  pipenv shell
 ```
 
 Go to the project directory
@@ -37,14 +37,15 @@ Install dependencies
 Create flavors and stocks
 
 ```bash
-  bash icecreamshop/scripts/create_db_test.sh
+  cd icecreamshop
+  bash scripts/create_db_test.sh
 ```
 
 
 Start the Django server
 
 ```bash
-  pipenv run api/coronavstech/manage.py runserver
+  python manage.py runserver
 ```
 
 ## Admin back office
