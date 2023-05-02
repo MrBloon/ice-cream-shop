@@ -15,6 +15,13 @@ Clone the project
   git clone https://github.com/MrBloon/nalo-test.git
 ```
 
+Install pipenv and activate the virtualvenv
+
+```bash
+  pip install pipenv
+  run pipenv shell
+```
+
 Go to the project directory
 
 ```bash
