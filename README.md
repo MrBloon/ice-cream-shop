@@ -1,6 +1,7 @@
 [![Django Version](https://img.shields.io/badge/django-4.2-green.svg)](https://docs.djangoproject.com/en/3.2/)
 [![Django REST framework](https://img.shields.io/badge/django--rest--framework-3.14-green.svg)](https://www.django-rest-framework.org/)
 [![pytest](https://img.shields.io/badge/pytest-7.3.1-green.svg)](https://docs.pytest.org/en/stable/)
+[![Python Version](https://img.shields.io/badge/python-3.9.7-blue.svg)](https://www.python.org/downloads/release/python-390/)
 
 
 # ice-cream-shop
