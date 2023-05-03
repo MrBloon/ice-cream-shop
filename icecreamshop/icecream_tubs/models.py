@@ -34,6 +34,8 @@ class IceCreamTub(models.Model):
     flavor = models.OneToOneField(Flavor, on_delete=models.CASCADE)
     scoops_available = models.IntegerField(default=40)
 
+    scoops_initial_stock = 40
+
     def __str__(self):
         return f"{self.flavor} ({self.scoops_available} scoops)"
 
@@ -41,12 +43,18 @@ class IceCreamTub(models.Model):
     def is_empty(self):
         return self.scoops_available == 0
 
+    @property
+    def filling_rate(self):
+        return f"{self.scoops_available / 40 * 100} %"
+
     def refill(self):
         self.scoops_available = 40
         self.save()
 
     def save(self, *args, **kwargs):
         if self.is_empty:
-            print(f"EMAIL: {self.flavor.name} tub is empty. Refill it in the admin back office!")
+            print(
+                f"EMAIL: {self.flavor.name} tub is empty. Refill it in the admin back office!"
+            )
 
         super().save(*args, **kwargs)

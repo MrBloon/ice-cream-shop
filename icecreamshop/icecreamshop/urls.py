@@ -3,12 +3,24 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.conf import settings
+from rest_framework import routers
 
-from icecream_tubs.urls import icecreams_router
-from orders.urls import orders_router
+from icecream_tubs.views import FlavorViewSet, IceCreamTubViewSet
+from orders.views import OrderViewSet, OrderItemViewSet
+
+router = routers.DefaultRouter()
+
+router.register(r"flavors", viewset=FlavorViewSet, basename="flavors")
+router.register(r"icecream_tubs", viewset=IceCreamTubViewSet, basename="icecream_tubs")
+
+router.register(r"orders", viewset=OrderViewSet, basename="orders")
+router.register(
+    r"orders/(?P<order_pk>[0-9]+)/order_items",
+    viewset=OrderItemViewSet,
+    basename="order_items",
+)
 
 urlpatterns = [
-                  path("admin/", admin.site.urls),
-                  path("", include(icecreams_router.urls)),
-                  path("", include(orders_router.urls)),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("admin/", admin.site.urls),
+    path("", include(router.urls)),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

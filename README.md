@@ -53,7 +53,11 @@ Start the Django server
 To go to the back office, start the Django server and go to:
 `http://localhost:8000/admin`
 
-
 Enter the username and password:
 `nalo_admin`
 `nalo2023`
+
+If module tzdata is not found, install it:
+```bash
+  pipenv install tzdata
+```
