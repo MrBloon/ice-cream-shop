@@ -17,11 +17,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pipenv
           pipenv install --dev
-      - name: Set environment variables
-        run: |
-          export $(grep -v '^#' .env | xargs)
+
       - name: Run pytest
+        env:
+          DJANGO_SETTINGS_MODULE: icecreamshop.settings
         run: |
           pwd
-          echo "${{env.DJANGO_SETTINGS_MODULE}}"
+          echo "DSM ${{env.DJANGO_SETTINGS_MODULE}}"
           pipenv run pytest -s -v
