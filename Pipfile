@@ -9,6 +9,7 @@ djangorestframework = "*"
 black = "*"
 pillow = "*"
 pytest-django = "*"
+django-extensions = "*"
 
 [dev-packages]
 
