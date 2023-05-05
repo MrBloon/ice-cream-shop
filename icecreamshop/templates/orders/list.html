@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Orders</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Customer Email</th>
+                <th>Total Price</th>
+                <th>Is confirmed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.order_number }}</td>
+                <td>{{ order.email }}</td>
+                <td>{{ order.total_price }}</td>
+                <td>{{ order.is_confirmed  }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

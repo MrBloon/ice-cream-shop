@@ -1,8 +1,10 @@
+from django.shortcuts import redirect, render
 from rest_framework import serializers
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
+from .forms import OrderForm
 from .serializers import OrderSerializer, OrderItemSerializer
 from .models import Order, OrderItem
 
@@ -10,6 +12,21 @@ from .models import Order, OrderItem
 class OrderViewSet(ModelViewSet):
     serializer_class = OrderSerializer
     queryset = Order.objects.all()
+
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(self.get_queryset())
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     context = {'orders': serializer.data}
+    #     return render(request, 'orders/list.html', context)
+
+    # def create(self, request, *args, **kwargs):
+    #     form = OrderForm(request.POST or None)
+    #     if request.method == 'POST':
+    #         if form.is_valid():
+    #             form.save()
+    #             return redirect('orders-list')
+    #     context = {'form': form}
+    #     return render(request, 'orders/create.html', context)
 
     @action(detail=True, methods=["patch"])
     def confirm(self, request, pk=None):
