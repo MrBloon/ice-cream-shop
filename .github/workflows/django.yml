@@ -24,7 +24,7 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install pipenv --upgrade
-        pipenv install --system
+        pipenv install --dev
         env
         pipenv graph
     - name: Run Tests
