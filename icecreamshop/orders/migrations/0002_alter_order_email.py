@@ -10,6 +10,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name="order", name="email", field=models.EmailField(max_length=254),
+            model_name="order",
+            name="email",
+            field=models.EmailField(max_length=254),
         ),
     ]

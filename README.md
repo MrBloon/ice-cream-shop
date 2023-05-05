@@ -7,6 +7,17 @@
 # ice-cream-shop
 
 A project to automate icecream orders. A user can order several scoops of different ice cream flavor and an admin can manage ice cream tubs stock
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`PYTHONPATH=/{YOUR_PATH_TO_PROJECT}/nalo-test/icecreamshop`
+
+`DJANGO_SETTING_MODULE=icecreamshop.settings`
+
+
+
 ## Run Locally
 
 Clone the project

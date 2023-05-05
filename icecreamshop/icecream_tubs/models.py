@@ -17,10 +17,10 @@ class Flavor(models.Model):
     photo = models.ImageField(upload_to="flavor_photos", null=True, blank=True)
     recipe = models.TextField(max_length=400)
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return f"{self.name}"
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs) -> None:
         if not self.photo:
             # Set the photo attribute based on the selected name
             photo_name = self.name.lower().replace(" ", "_") + ".png"
@@ -36,22 +36,22 @@ class IceCreamTub(models.Model):
 
     scoops_initial_stock = 40
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.flavor} ({self.scoops_available} scoops)"
 
     @property
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.scoops_available == 0
 
     @property
-    def filling_rate(self):
+    def filling_rate(self) -> str:
         return f"{self.scoops_available / 40 * 100} %"
 
-    def refill(self):
+    def refill(self) -> None:
         self.scoops_available = 40
         self.save()
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs) -> None:
         if self.is_empty:
             print(
                 f"EMAIL: {self.flavor.name} tub is empty. Refill it in the admin back office!"
