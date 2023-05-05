@@ -25,6 +25,7 @@ jobs:
       run: |
         pip install pipenv --upgrade
         pipenv install --system
+        pipenv shell
     - name: Run Tests
       run: |
         pytest
