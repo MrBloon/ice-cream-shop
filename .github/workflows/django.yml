@@ -26,6 +26,7 @@ jobs:
         pip install pipenv --upgrade
         pipenv install --system
         env
+        pipenv graph
     - name: Run Tests
       run: |
-        pytest
+        pytest -s -v duration=0
