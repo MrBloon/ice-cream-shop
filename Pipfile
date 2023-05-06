@@ -10,6 +10,7 @@ black = "*"
 pillow = "*"
 pytest-django = "*"
 django-extensions = "*"
+pytest-sugar = "*"
 
 [dev-packages]
 
