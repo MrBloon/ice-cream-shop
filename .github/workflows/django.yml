@@ -27,8 +27,7 @@ jobs:
           echo "DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}"
       - name: Run tests
         run: |
-          pwd
-          pytest
+          pipenv run pytest
 
 
 
