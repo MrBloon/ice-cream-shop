@@ -12,5 +12,3 @@
 
 # DB
 db.sqlite3
-
-.env
