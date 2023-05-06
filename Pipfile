@@ -13,6 +13,7 @@ django-extensions = "*"
 pytest-sugar = "*"
 
 [dev-packages]
+pytest-env = "*"
 
 [requires]
 python_version = "3.9"
