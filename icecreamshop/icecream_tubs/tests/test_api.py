@@ -40,8 +40,9 @@ def test_create_flavor_without_arguments_should_fail(client) -> None:
     assert response.status_code == 400
     assert json.loads(response.content) == {
         "name": ["This field is required."],
-        "recipe": ["This field is required."]
+        "recipe": ["This field is required."],
     }
+
 
 def test_create_existing_flavor_name_should_fail(client) -> None:
     Flavor.objects.create(
@@ -49,12 +50,9 @@ def test_create_existing_flavor_name_should_fail(client) -> None:
         photo=None,
         recipe="Recipe description",
     )
-    response = client.post(path=flavors_url, data=
-        {
-            "name": "CHOCOLATE_ORANGE",
-            "photo": "",
-            "recipe": "Recipe description"
-        }
+    response = client.post(
+        path=flavors_url,
+        data={"name": "CHOCOLATE_ORANGE", "photo": "", "recipe": "Recipe description"},
     )
     assert response.status_code == 400
     assert json.loads(response.content) == {
@@ -63,12 +61,9 @@ def test_create_existing_flavor_name_should_fail(client) -> None:
 
 
 def test_create_flavor_with_name_matching_photo_should_succeed(client) -> None:
-    response = client.post(path=flavors_url, data=
-        {
-            "name": "CHOCOLATE_ORANGE",
-            "photo": "",
-            "recipe": "Recipe description"
-        }
+    response = client.post(
+        path=flavors_url,
+        data={"name": "CHOCOLATE_ORANGE", "photo": "", "recipe": "Recipe description"},
     )
     assert response.status_code == 201
     response_content = response.json()
