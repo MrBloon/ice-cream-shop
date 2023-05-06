@@ -19,8 +19,8 @@ jobs:
           pipenv install --dev
       - name: Set up environment variables
         run: |
-          echo "PYTHONPATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
-          echo "DJANGO_SETTINGS_MODULE=project.settings" >> $GITHUB_ENV
+          echo "PYTHONPATH=${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/icecreamshop" >> $GITHUB_ENV
+          echo "DJANGO_SETTINGS_MODULE=icecreamshop.settings" >> $GITHUB_ENV
       - name: Run tests
         run: |
           pipenv run pytest
