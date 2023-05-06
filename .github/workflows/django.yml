@@ -20,7 +20,7 @@ jobs:
       - name: Set up environment variables
         run: |
           echo "PYTHONPATH=${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/icecreamshop" >> $GITHUB_ENV
-          echo "DJANGO_SETTINGS_MODULE=icecreamshop.icecreamshop.settings" >> $GITHUB_ENV
+          echo "DJANGO_SETTINGS_MODULE=icecreamshop.settings" >> $GITHUB_ENV
       - name: Print environment variables
         run: |
           echo "PYTHONPATH: ${PYTHONPATH}"

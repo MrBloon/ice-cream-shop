@@ -12,6 +12,7 @@ pytest-django = "*"
 django-extensions = "*"
 
 [dev-packages]
+pytest-env = "*"
 
 [requires]
 python_version = "3.9"
