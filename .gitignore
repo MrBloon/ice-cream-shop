@@ -12,3 +12,6 @@
 
 # DB
 db.sqlite3
+
+# Environment varialbes
+.env

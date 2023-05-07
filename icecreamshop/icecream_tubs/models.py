@@ -45,10 +45,10 @@ class IceCreamTub(models.Model):
 
     @property
     def filling_rate(self) -> str:
-        return f"{self.scoops_available / 40 * 100} %"
+        return f"{self.scoops_available / self.scoops_initial_stock * 100} %"
 
     def refill(self) -> None:
-        self.scoops_available = 40
+        self.scoops_available = self.scoops_initial_stock
         self.save()
 
     def save(self, *args, **kwargs) -> None:
