@@ -12,7 +12,8 @@ A project to automate icecream orders. A user can order several scoops of differ
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`PYTHONPATH=/{YOUR_PATH_TO_PROJECT}/nalo-test/icecreamshop`
+`PYTHONPATH=/{YOUR_PATH_TO_PROJECT}/nalo-test/
+icecreamshop`
 
 `DJANGO_SETTING_MODULE=icecreamshop.settings`
 
@@ -57,6 +58,14 @@ Start the Django server
 
 ```bash
   python manage.py runserver
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  pipenv run pytest .
 ```
 
 ## Admin back office
