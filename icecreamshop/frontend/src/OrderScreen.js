@@ -3,9 +3,9 @@ import axios from 'axios'
 
 function OrderScreen() {
   const [flavors, setFlavors] = useState([]);
-  console.log("flavors", flavors)
+  console.log(flavors);
   useEffect(() => {
-  axios.get('http://localhost:8000/flavors')
+  axios.get('http://localhost:8000/flavors/')
     .then(response => {
       setFlavors(response.data);
     })
