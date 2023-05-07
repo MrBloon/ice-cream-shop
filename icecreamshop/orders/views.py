@@ -1,10 +1,8 @@
-from django.shortcuts import render, redirect
 from rest_framework import serializers
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from .forms import OrderForm
 from .serializers import OrderSerializer, OrderItemSerializer
 from .models import Order, OrderItem
 
