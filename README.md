@@ -6,7 +6,7 @@
 
 # ice-cream-shop
 
-A project to automate icecream orders. A user can order several scoops of different ice cream flavor and an admin can manage ice cream tubs stock
+A project to automate icecream orders. A user can order several scoops of different ice cream flavor and an admin can manage ice cream tubs stock.
 
 ## Environment Variables
 
