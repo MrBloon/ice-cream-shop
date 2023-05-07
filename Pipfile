@@ -11,6 +11,7 @@ pillow = "*"
 pytest-django = "*"
 django-extensions = "*"
 pytest-sugar = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 pytest-env = "*"
