@@ -1,39 +1,22 @@
 import { useState, useEffect } from 'react'
-import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
-import OrderItem from './OrderItem'
-import { useGetIceCreamTubs, useGetFlavors, usePostOrder } from "./api/apiCall"
+import OrderItem from '../components/OrderItem'
+import { useGetIceCreamTubs, useGetFlavors, usePostOrder } from "../api/apiCall"
 
 function OrderScreen() {
-  const [orderItems, setOrderItems] = useState([
-    {
-      "scoops_requested": 2,
-      "ice_cream_tub": 1
-    }
-  ]);
-  const [orderItemCount, setOrderItemCount] = useState(0);
+  const [orderItemCount, setOrderItemCount] = useState(0)
   const [isAddingItem, setIsAddingItem] = useState(false)
   const [isClickable, setIsClickable] = useState(false)
   const [orderId, setOrderId] = useState(null)
   const [email, setEmail] = useState('')
-  const { data: iceCreamTubData, status: iceCreamStatus } = useGetIceCreamTubs();
-  const { data: flavorData, status: flavorStatus } = useGetFlavors();
-  const { mutate, isSuccess, isLoading, isError, error } = usePostOrder()
-
-  const onAddItem = (orderItem) => {
-    setOrderItems(prev => ({...prev, orderItem}) )
-  }
-  
+  const { data: iceCreamTubData, status: iceCreamStatus } = useGetIceCreamTubs()
+  const { data: flavorData, status: flavorStatus } = useGetFlavors()
+  const { mutate, isSuccess, isLoading, isError, error } = usePostOrder(setOrderId)
 
   const handleAddItemClick = () => {
     setOrderItemCount(orderItemCount + 1)
     setIsAddingItem(true)
   }
  
-  const addOrderItemMutation = useMutation((orderItem) =>
-    axios.post(`http://localhost:8000/orders/${orderId}/order_items`, orderItem)
-  )
-
   const handleEmailChange = (event) => {
     setEmail(event.target.value)
   }
@@ -79,7 +62,7 @@ function OrderScreen() {
       </button>
       {isAddingItem && (
         [...Array(orderItemCount)].map((_, index) => (
-          <OrderItem key={index} icecream_tubs={iceCreamTubData} flavors={flavorData}/>
+          <OrderItem key={index} icecream_tubs={iceCreamTubData} flavors={flavorData} orderId={orderId}/>
         ))
       )}
     </div>

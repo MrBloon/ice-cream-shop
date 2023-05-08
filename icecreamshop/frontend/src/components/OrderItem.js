@@ -1,15 +1,15 @@
 import { useState } from 'react'
+import { usePostOrderItem } from "../api/apiCall"
 
 
-function OrderItem({icecream_tubs, flavors}) {
+function OrderItem({icecream_tubs, flavors, orderId}) {
 	const [selectedIceCreamTub, setSelectedIceCreamTub] = useState('')
 	const [scoopsRequested, setScoopsRequested] = useState(1)
+  const { mutate, isSuccess, isLoading, isError, error } = usePostOrderItem()
 
   function getFlavorByName(name, flavors) {
     return flavors.find(flavor => flavor.name === name);
   }
-
-  console.log("selectedIceCreamTub", selectedIceCreamTub)
 
 	const handleIceCreamTubChange = event => {
     setSelectedIceCreamTub(event.target.value)
@@ -18,6 +18,10 @@ function OrderItem({icecream_tubs, flavors}) {
 
 	const handleScoopsRequestedChange = event => {
     setScoopsRequested(Number(event.target.value));
+  }
+
+  const handleConfirmOrderItem = () => {
+    mutate({scoopsRequested, selectedIceCreamTub, orderId})
   }
 
   return (
@@ -47,6 +51,9 @@ function OrderItem({icecream_tubs, flavors}) {
         onChange={handleScoopsRequestedChange}
       />
       {selectedIceCreamTub && <img src={getFlavorByName(selectedIceCreamTub, flavors).photo} alt={selectedIceCreamTub.flavor_name} />}
+      <button className="button submit" onClick={handleConfirmOrderItem} type="submit">
+        Confirm
+      </button>
     </div>
   );
 }
