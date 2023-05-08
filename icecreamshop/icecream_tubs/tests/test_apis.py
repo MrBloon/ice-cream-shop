@@ -84,6 +84,7 @@ def test_create_icecream_tub_should_succeed(client, flavor) -> None:
         "id": 1,
         "scoops_available": 40,
         "flavor": 1,
+        "flavor_name": "CHOCOLATE_ORANGE"
     }
 
 
