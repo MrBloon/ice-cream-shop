@@ -1,36 +1,32 @@
-## Warning: Python 3.9 was not found on your system...
-#Neither 'pyenv' nor 'asdf' could be found to install Python.
+name: Pytest CI
 
 on: [push]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip 
-          pip install pipenv 
-          pipenv install --dev
-      - name: Set up environment variables
-        run: |
-          echo "PYTHONPATH=${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/icecreamshop" >> $GITHUB_ENV
-          echo "DJANGO_SETTINGS_MODULE=icecreamshop.settings" >> $GITHUB_ENV
-      - name: Print environment variables
-        run: |
-          echo "PYTHONPATH: ${PYTHONPATH}"
-          echo "DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}"
-      - name: Run tests
-        run: |
-          pipenv run pytest
+    - name: Check out repository
+      uses: actions/checkout@v2
 
+    - name: Set up Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
 
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip 
+        pip install pipenv 
+        pipenv install --dev
 
-
-
+    - name: Run tests
+      run: |
+        cd icecreamshop
+        pipenv run pytest
