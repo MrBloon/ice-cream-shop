@@ -20,41 +20,6 @@ export const useGetIceCreamTubs = () => {
   return useQuery([endpoint.get_icecream_tubs], getIceCreamTubs);
 }
 
-
-
-
-
-
 export const usePostOrder = () => {
-  const { mutate: mutateOrderId } = useMutation(
-    (id) =>
-      axiosInstance.post(`${endpoint.post_order_id}/${id}/order_items`, {
-        scoops_requested: 2,
-        ice_cream_tub: 1,
-      }),
-    {
-      onSuccess(response) {
-        console.log("c'est genial !");
-      },
-      onError(error) {
-        console.log(error);
-      },
-    }
-  );
-
-  return useMutation(
-    (email) => axiosInstance.post(endpoint.post_order, { email }),
-    {
-      onSuccess(response) {
-        mutateOrderId(response?.data?.id);
-
-        ///
-
-        // do something
-      },
-      onError(error) {
-        console.log(error);
-      },
-    }
-  );
-};
+  return useMutation((email) => axiosInstance.post(endpoint.post_order, { email }))
+}
