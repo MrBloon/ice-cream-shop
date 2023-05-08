@@ -60,6 +60,18 @@ Start the Django server
   python manage.py runserver
 ```
 
+## Starting frontend
+
+To start the frontend, install the dependencies and run the react app
+
+```bash
+  cd frontend
+  npm intall
+  npm run build
+  npm start
+```
+
+
 ## Running Tests
 
 To run tests, run the following command
