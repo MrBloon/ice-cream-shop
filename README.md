@@ -2,6 +2,7 @@
 [![Django REST framework](https://img.shields.io/badge/django--rest--framework-3.14-green.svg)](https://www.django-rest-framework.org/)
 [![pytest](https://img.shields.io/badge/pytest-7.3.1-green.svg)](https://docs.pytest.org/en/stable/)
 [![Python Version](https://img.shields.io/badge/python-3.9.7-blue.svg)](https://www.python.org/downloads/release/python-390/)
+[![Pytest CI](https://github.com/MrBloon/nalo-test/actions/workflows/django.yml/badge.svg)](https://github.com/MrBloon/nalo-test/actions/workflows/django.yml)
 
 
 # ice-cream-shop
